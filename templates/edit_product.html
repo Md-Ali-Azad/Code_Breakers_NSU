@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+{% block content %}
+
+
+<div class="container">
+  <h2>Sign up</h2>
+  
+   
+  <form method="post" action="{% url 'controller:update' vendor.pk %}" enctype='multipart/form-data' >
+  <div class="auth">
+    {% csrf_token %}
+    {{v_form|crispy}}
+  </div>
+
+  
+
+    
+  <button type="submit" class="btn btn-primary">Sign up</button>
+      
+  </form>
+
+</div>
+
+
+
+{% endblock %}

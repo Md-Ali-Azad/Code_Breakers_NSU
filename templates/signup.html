@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+{% block content %}
+
+
+{% if messages %}
+<div class="messages" id="message">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<div class="container">
+
+  
+  <h2>Sign up</h2>
+  <form method="post" enctype='multipart/form-data'>
+  <div class="auth">
+    {% csrf_token %}
+    {{u_form|crispy}}
+  </div>
+
+  <div>
+    <h2>Additional Information</h2>
+    <select id='purpose'class="form-control">
+      <option value="0" selected>Choose</option>
+      <option value="1">Vendors</option>
+      <option value="2">Customer</option>
+      <option value="3">Employee</option>
+  </select>
+  </div>
+
+  <div class="ven" style="display: none;">
+    <h3>Vendors Form</h3>
+      {{v_form|crispy}}
+    </div>
+
+
+    <div class="cus" style="display: none;">
+      <h3>Customers Form</h3>
+        {{p_form|crispy}}
+      </div>
+
+
+      <div class="ce" style="display: none;">
+        <h3>Company Employee Form</h3>
+          {{ce_form|crispy}}
+        </div>
+
+      <div class="pro" style="display: none;">
+        <h3>Please, Choose a form</h3>
+        </div>
+    <button type="submit" class="btn btn-primary" style="margin-top: 5px;">Sign up</button>
+  </form>
+
+</div>
+
+<script>
+$('#purpose').on('change', function () {
+  if(this.value === "0"){
+      $(".pro").show();
+      $(".ven").hide();
+      $(".cus").hide();
+      $(".ce").hide();
+  } else if (this.value=="1") {
+      $(".ven").show();
+
+      $(".pro").hide();
+      $(".cus").hide();
+      $(".ce").hide();
+
+  } else if (this.value=="2") {
+    $(".cus").show();
+    $(".pro").hide();
+      $(".ven").hide();
+      $(".ce").hide();
+  } else if (this.value=="3") {
+    $(".cus").hide();
+    $(".pro").hide();
+      $(".ven").hide();
+      $(".ce").show();
+  }
+});
+
+</script>
+
+{% endblock %}

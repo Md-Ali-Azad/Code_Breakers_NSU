@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Add new product</title>
+  <style type="text/css">
+    .button {font:14px Georgia,Verdana; color: white; margin-bottom:10px; padding:8px 10px 9px; border:1px solid #ccc; background:#008080; cursor:pointer}
+.button1 {font:14px Georgia,Verdana; color: white; margin-bottom:10px; padding:8px 10px 9px; border:1px solid #ccc; background:#008080; cursor:pointer}
+
+.button:hover {border:1px solid #bbb; background:#008000}
+.button1:hover {border:1px solid #bbb; background:#8B0000}
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color:#eee;">
+
+<div class="container">
+  <h2 align="center">Add New Product</h2>
+  <h2>  </h2>
+  <form class="form-horizontal" action="/action_page.php">
+  
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="product_id">Product ID :</label>
+      <div class="col-sm-10">          
+        <input type="number" class="form-control" id="product_id" placeholder="Example : 123456" name="product_id">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="product_name">Product Name :</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="product_name" placeholder="Example : Cotton" name="product_name">
+      </div>
+    </div>
+    
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="product_color">Product Color :</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" id="product_color" placeholder="Example : Red" name="product_color">
+      </div>
+    </div>
+    
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="product_des">Description :</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" rows="5" id="product_des" placeholder="Describe the product in short..." name="product_des"></textarea>
+      </div>
+    </div>
+   
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="button button">Add Product</button>
+      </div>
+    </div>
+    
+  </form>
+</div>
+
+</body>
+</html>
