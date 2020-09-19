@@ -26,7 +26,8 @@ from .forms import *
 @login_required(login_url="/")
 def home(request):
     context={
-        'Hello':'hello'
+        'Hello':'hello',
+        'ach':'active',
     }
     return render(request,"home.html", context)
 
@@ -52,7 +53,7 @@ def signup(request):
             v_form.user = user
             v_form.save()
 
-            ce_form = v_form.save(commit=False)
+            ce_form = ce_form.save(commit=False)
             ce_form.user = user
             ce_form.save()
 
@@ -63,7 +64,7 @@ def signup(request):
         p_form = CustomerForm(request.POST)
         v_form = VendorsForm(request.POST)
         ce_form = CEForm(request.POST)
-    return render(request, 'signup.html', {'u_form': u_form, 'p_form': p_form, 'v_form':v_form, 'ce_form':ce_form})
+    return render(request, 'signup.html', {'u_form': u_form, 'p_form': p_form, 'v_form':v_form, 'ce_form':ce_form, 'ac':'active'})
 
 def emp(request):  
     if request.method == "POST":  

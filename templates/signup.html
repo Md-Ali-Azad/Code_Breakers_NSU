@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% block title %}Signup{% endblock %}
+
 {% load crispy_forms_tags %} 
 {% block content %}
 
@@ -15,7 +17,7 @@
 <div class="container">
 
   
-  <h2>Sign up</h2>
+  <h2>Authentication Information</h2>
   <form method="post" enctype='multipart/form-data'>
   <div class="auth">
     {% csrf_token %}
