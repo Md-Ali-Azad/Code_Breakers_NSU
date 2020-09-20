@@ -1,5 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+from django_currentuser.db.models import CurrentUserField
+
 
 class Raw_Materials(models.Model):
     rm=models.CharField(verbose_name="Raw Materials", max_length=100)
@@ -10,6 +14,18 @@ class Designation(models.Model):
     created_at= models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.designaiton
+
+
+class News(models.Model):
+    user = CurrentUserField() 
+    ntitle=models.CharField(max_length=500, default='NSU Garment System', verbose_name="News Title")
+    ndetails = RichTextUploadingField(verbose_name="News Details")
+    ncreated_at= models.DateTimeField(auto_now_add=True)
+    nupdated_at=models.DateTimeField(auto_now=True)
+    class Meta:  
+        db_table = "news"  
+    def __str__(self):
+        return self.ndetails
 
 
 class Customer(models.Model):

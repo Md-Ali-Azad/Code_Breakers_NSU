@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}{{user}}{% endblock %}
+
+{% load crispy_forms_tags %} 
+{% block content %}
+
+
+{% if messages %}
+<div class="messages" id="message">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<div class="container">
+
+  
+    <div class="profile" style="height: 200px;">
+        
+        
+        <!--<img src="{{user.Company_Employee.eprofile_Image.url}}" alt="" class="proimage"> -->
+            <!--user.id or user.profle.id-->
+        
+        <div id="container" style="margin-top:100px;">
+            <div class="card" style="margin-right: 25%; margin-left: 25%;">
+                <div class="card-header bg-success text-white" style="font-size: 20px;"><b>Hello, {{user}}</b></div>
+                <div class="card-text" style="margin-top: 8px;margin-left:8px;"><i>Name: </i><b>{{user}}</b></div>
+                <div class="card-text" style="margin-top: 8px;margin-left:8px;"><i>Email: </i><b>{{user.email}}</b></div>
+                <div class="card-text" style="margin-top: 8px;margin-left:8px;"><i>Joined at: </i><b>{{user.date_joined}}</b></div>
+                <div class="card-text" style="margin-top: 8px;margin-left:8px;"><i>Last login at: </i><b>{{user.last_login}}</b></div>
+                <div class="card-text" style="margin-top: 8px;margin-left:8px;"><i>User: </i><b>{{user.groups.all.0.name}}</b></div>
+            </div>
+        </div>
+
+
+
+    </div>
+ 
+
+</div>
+
+{% endblock %}

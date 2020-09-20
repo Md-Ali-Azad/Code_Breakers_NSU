@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}{{user}} (update){% endblock %}
+
+{% load crispy_forms_tags %} 
+{% block content %}
+
+
+{% if messages %}
+<div class="messages" id="message">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<div class="container">
+
+  
+  <h2>Authentication Information</h2>
+  <form method="post" enctype='multipart/form-data'>
+  <div class="auth">
+    {% csrf_token %}
+    {{u_form|crispy}}
+  </div>
+
+  {% if user.groups.all.0.name in "Vendor" %}
+  <div class="ven" >
+    <h3>Vendors Form</h3>
+      {{v_form|crispy}}
+    </div>
+
+    {% elif user.groups.all.0.name in "Customer" %}   <!--request.user|has_group: "Customer"-->
+    <div class="cus" >
+      <h3>Customers Form</h3>
+        {{p_form|crispy}}
+      </div>
+
+      {% else %}
+      <div class="ce" >
+        <h3>Company Employee Form</h3>
+          {{ce_form|crispy}}
+    {% endif %}
+
+
+
+    <button type="submit" class="btn btn-primary" style="margin-top: 5px;">Sign up</button>
+  </form>
+
+</div>
+
+
+
+
+{% endblock %}
+

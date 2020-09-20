@@ -9,7 +9,18 @@ urlpatterns = [
     path('', auth_views.LoginView.as_view(redirect_authenticated_user=True,template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page= 'controller:login'), name='logout'),
     path('signup/',signup, name='signup'),
-    path('success/', success, name='success'),
+    path('profile/', profile, name='profile'),
+    path('change_password/', change_password, name="change_password"),
+    path('profileedit/', profileedit, name="profileedit"),
+
+    ########------News Section-----########
+    path('news/news/', news, name="news"),
+    path('news/nedit/<int:id>/', nedit, name="nedit"),
+    path('news/ndelete/<int:id>/', ndelete, name="ndelete"), 
+    path('news/newscomments/<int:id>/', newscomments, name="newscomments"),
+
+
+
     path('show/',show,name='show'),
     path('edit/<int:id>',edit,name='edit'),
     path('update/<int:id>',update,name='update'),
