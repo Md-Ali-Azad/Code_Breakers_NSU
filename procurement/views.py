@@ -10,7 +10,12 @@ from .forms import OrderForm,OrderStatusForm,EmailForm
 from controller.models import Vendors
 from django.core.mail import send_mail
 
-# Create your views here.
+from django.db.models import Q 
+from django.contrib import messages
+from controller.decorator import Employeeonly, Owneronly, Vendoronly, Customeronly
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url="/")
 def order_create(request): 
     if request.method == 'POST':
         o_form = OrderForm(request.POST,request.FILES)
@@ -23,6 +28,7 @@ def order_create(request):
         o_form = OrderForm()
     return render(request, 'order_product.html', {'o_form':o_form})
 
+@login_required(login_url="/")
 def order_list(request):
     if request.method == 'GET':
         context = {
@@ -30,6 +36,8 @@ def order_list(request):
         }
         return render(request, 'show_order.html',context)
 
+
+@login_required(login_url="/")
 def order_state(request): 
     if request.method == 'POST':
         o_form = OrderStatusForm(request.POST)
@@ -42,6 +50,7 @@ def order_state(request):
         o_form = OrderStatusForm()
     return render(request, 'order_status_form.html', {'o_form':o_form})
 
+@login_required(login_url="/")
 def order_status_list(request,id):
     if request.method == 'GET':
         if hasattr(Sales_Manager.objects.get(id=id), 'order_status'):
@@ -52,6 +61,8 @@ def order_status_list(request,id):
         else:
             return HttpResponse("it's order status dont created")
 
+
+@login_required(login_url="/")
 def Deliverd_Product(request,id):
     if request.method == 'GET':
         
@@ -63,6 +74,8 @@ def Deliverd_Product(request,id):
         }
         return render(request, 'show_order.html',context)
 
+
+@login_required(login_url="/")
 def Order_vendor(request):
     if request.method == 'GET':
         context = {
@@ -71,12 +84,17 @@ def Order_vendor(request):
         print(Vendors.objects.all()[0].vprofile_Image)
     return render(request, 'vendors_list.html',context)
 
+
+@login_required(login_url="/")
 def Send_vendor(request):
     if request.method == 'GET':
         f = EmailForm()
 
     return render(request, 'send_vendor.html',{'form':f})
 
+
+
+@login_required(login_url="/")
 def Mail(request):
     if request.method == 'POST':
         form = EmailForm(request.POST)
