@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+{% block title %}{{user}} (New Order){% endblock %}
+{% block content %}
+
+
+
+{% if messages %}
+<div class="messages" id="message">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="container">
+  <h2>New Order</h2>
+  
+   
+  <form method="post">
+  <div class="auth">
+    {% csrf_token %}
+    {{form|crispy}}
+  </div>
+
+  
+
+    
+  <button type="submit" class="btn btn-primary">Submit</button>
+      
+  </form>
+
+</div>
+
+
+
+{% endblock %}

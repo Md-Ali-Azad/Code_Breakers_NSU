@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+{% block title %}{{user}} (Delivery List){% endblock %}
+{% block content %}
+
+
+
+{% if messages %}
+<div class="messages" id="message">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<div class="container">
+
+  {% if delivery.count < 1 %}
+  <h2 style="margin-left:40%;">No Delivery</h2>
+  {% else %}
+  <h2>Dlivery List ({{delivery.count}})</h2>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">  
+    <tr>  
+        <th>No</th>  
+        <th>Order Name</th>  
+        <th>Courier Via</th>  
+        <th>Date</th> 
+    </tr>  
+    </thead>  
+    <tbody>
+        {%for delivery in delivery%} 
+    <tr>  
+        <td>{{forloop.counter}}</td>  
+        <td>{{delivery.order}}</td>  
+        <td>{{delivery.courier_name}}</td>  
+        <td>{{delivery.created_date}}</td>
+        
+    </tr>  
+     {%endfor%}
+    </tbody>
+    </table>
+ {% endif %} 
+  </div>
+
+
+  {% endblock %}

@@ -14,12 +14,6 @@
         {% endfor %}
     </div>
     {% endif %}
-    <form method="POST" class="form" action="/news/news/" style="margin-top: 100px;">
-        {% csrf_token %}
-        <h2 class="hello">New Post</h2>
-        {{ form.media }} {{ form|crispy }}
-        <button class="btn btn-primary">Publish</button>
-    </form>
 
     <div>
         {% for nlist in nlist_show %}
@@ -38,10 +32,6 @@
                         <div style="text-align: right;">
                             <b style="cursor: pointer;" id="com"><a href="/news/newscomments/{{ nlist.id }}/"><i class="fas fa-comments"></i> Comments</a></b>
                         </div>
-                    </div>
-
-                    <div style="text-align: right ;"><a href="/news/nedit/{{ nlist.id }}/"><i class='fas fa-pencil-alt'></i> Edit</a> ||
-                        <a href="/news/ndelete/{{ nlist.id }}/"><i class='fas fa-trash-alt'></i> Delete</a>
                     </div>
                 </div>
             </div>

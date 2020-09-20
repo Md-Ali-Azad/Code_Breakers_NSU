@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}{{user}} (Product List){% endblock %}
+{% load crispy_forms_tags %} 
+{% block content %}
+    {% if messages %}
+    <div class="messages" id="message">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+<div class="container">
+
+  {% if product.count < 1 %}
+<h2 style="margin-left:40%;">No product</h2>
+{% else %}
+<h2>Total Product ({{product.count}})</h2>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">  
+    <tr>  
+        <th>No</th>  
+        <th> Name</th>  
+        <th>Quantity</th>  
+        <th>Created date</th>  
+    </tr>  
+    </thead>  
+    <tbody>
+        {%for product in product%} 
+    <tr>  
+        <td>{{forloop.counter}}</td>  
+        <td>{{product.name}}</td>  
+        <td>{{product.quantity}}</td>  
+        <td>{{product.created_date}}</td>
+         
+    </tr>  
+  </tbody>
+     {%endfor%}
+    </table>
+{% endif %}
+</div>
+
+     {% endblock %}    
+<style type="text/css">
+  body {font:12px/1.4 Verdana,Arial; background:#eee; height:100%; margin:25px 0; padding:0}
+h1 {font:24px Georgia,Verdana; margin:0}
+h2 {font-size:12px; font-weight:normal; font-style:italic; margin:0 0 20px}
+p {margin-top:0}
+ul {margin:0; padding-left:20px}
+
+table {
+border-collapse: collapse;
+width: 100%;
+}
+
+th{
+padding: 8px;
+border: 2px solid #ddd;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+td{
+padding: 8px;
+border: 2px solid #ddd;
+text-align: left;
+border-bottom: 2px solid #ddd;
+}
+th{background-color:#f45456;}
+tr:hover {background-color:#f5f5f5;}
+
+#testdiv {width:600px; margin:0 auto; border:1px solid #ccc; padding:20px 25px; background:#fff}
+
+#tinybox {position:absolute; display:none; padding:10px; background:#fff url(images/preload.gif) no-repeat 50% 50%; border:10px solid #e3e3e3; z-index:2000}
+#tinymask {position:absolute; display:none; top:0; left:0; height:100%; width:100%; background:#000; z-index:1500}
+#tinycontent {background:#fff}
+
+.button {font:14px Georgia,Verdana; color: white; margin-bottom:10px; padding:8px 10px 9px; border:1px solid #ccc; background:#008080; cursor:pointer}
+.button1 {font:14px Georgia,Verdana; color: white; margin-bottom:10px; padding:8px 10px 9px; border:1px solid #ccc; background:#008080; cursor:pointer}
+
+.button:hover {border:1px solid #bbb; background:#008000}
+.button1:hover {border:1px solid #bbb; background:#8B0000}
+</style>

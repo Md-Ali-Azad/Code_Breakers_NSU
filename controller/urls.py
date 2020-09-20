@@ -15,11 +15,16 @@ urlpatterns = [
 
     ########------News Section-----########
     path('news/news/', news, name="news"),
+    path('news/newsall/', allnews, name="allnews"),
     path('news/nedit/<int:id>/', nedit, name="nedit"),
     path('news/ndelete/<int:id>/', ndelete, name="ndelete"), 
     path('news/newscomments/<int:id>/', newscomments, name="newscomments"),
 
 
+
+    ##########-----App Connection------#########
+    path('procurement/',include('procurement.urls',namespace="procurement")),
+    path('inventory/',include('inventory.urls',namespace="inventory")),
 
     path('show/',show,name='show'),
     path('edit/<int:id>',edit,name='edit'),

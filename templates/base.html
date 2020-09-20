@@ -44,13 +44,53 @@
 
           {% if user.is_authenticated %}
 
-          <li class="nav-item">
-            <a class="nav-link" href="/news/news">News</a>
+          <li class="nav-item dropdown {{news}}">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              News
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item {{news11}}" href="/news/newsall">News</a>
+              <a class="dropdown-item {{news1}}" href="/news/news">{{user}} News (Edit/Create)</a>
+            </div>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'controller:logout' %}">Logout</a>
+
+          {%if user.is_authenticated and user.groups.all.0.name in "Employee"%}
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Product
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="/inventory/create-product">Create Product</a>
+              <a class="dropdown-item " href="/inventory/product-list">Product List</a>
+              
+            </div>
           </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Order
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="/inventory/create-order">New Order</a>
+              <a class="dropdown-item " href="/inventory/order-list">Order List</a>
+              
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Delivery
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="/inventory/create-delivery">New Delivery</a>
+              <a class="dropdown-item " href="/inventory/delivery-list">Delivery List</a>
+              
+            </div>
+          </li>
+
+          {%endif%} 
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -62,6 +102,22 @@
               <a class="dropdown-item {{p_ac}}" href="/change_password">Reset Password</a>
             </div>
           </li>
+
+
+          {% if user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">Admin Panel</a>
+          </li>
+          {% endif %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'controller:logout' %}">Logout</a>
+          </li>
+
+          
+
+
+
           {% endif %}
 
 

@@ -22,6 +22,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import *
 from .forms import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from controller.decorator import Owneronly, Vendoronly, Customeronly, Employeeonly
 
 
 
@@ -41,12 +42,21 @@ def news(request):
 	else:
 		form = NewsForm()
 		
+	nlist = News.objects.order_by('ncreated_at').filter(user=request.user).reverse()   
+	paginator = Paginator(nlist, 3) 
+	page = request.GET.get('page')
+	nlist_show = paginator.get_page(page)
+	args={'news': 'active','news1':'active' ,'form': form, 'nlist':nlist, 'nlist_show': nlist_show}
+	return render(request, "news/news.html", args)
+
+@login_required(login_url="/")
+def allnews(request):
 	nlist = News.objects.order_by('ncreated_at').reverse()   
 	paginator = Paginator(nlist, 3) 
 	page = request.GET.get('page')
 	nlist_show = paginator.get_page(page)
-	args={'news': 'active', 'form': form, 'nlist':nlist, 'nlist_show': nlist_show}
-	return render(request, "news/news.html", args)
+	args={'news': 'active', 'news11':'active' , 'nlist':nlist, 'nlist_show': nlist_show}
+	return render(request, "news/newsforall.html", args)
 
 @login_required(login_url="/")
 def ndelete(request, id):  
@@ -70,6 +80,11 @@ def nedit(request, id):
 def newscomments(request, id):
 	nlist = News.objects.get(id=id)
 	return render(request,'news/newscomments.html', {'nlist':nlist, 'news': 'active'})
+
+
+
+
+
 
 
 

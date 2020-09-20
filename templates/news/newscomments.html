@@ -12,6 +12,9 @@
                     <div>
                         <div style="text-align: left; position:absolute;"><i class="fas fa-pen"></i> Posted at: <b>{{nlist.ncreated_at}}</b> <b style="font-size: 10px;">({{nlist.ncreated_at|timesince}} Ago)</b>
                         </div>
+                        <br>
+                        <div style="text-align: left; position:absolute;"><i class="fas fa-pen"></i> Posted By: <b>{{user}} ({{user.groups.all.0.name}})</b> <b style="font-size: 10px;">(Update: {{nlist.nupdated_at|timesince}} Ago)</b>
+                        </div>
                         <div style="text-align: right;">
                             <b style="cursor: pointer;" id="com"><i class="fas fa-comments"></i> Comments</b>
                         </div>

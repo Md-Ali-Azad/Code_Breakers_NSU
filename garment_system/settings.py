@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'controller',
     'crispy_forms',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'procurement',
+    'inventory',
 ]
 
 MIDDLEWARE = [

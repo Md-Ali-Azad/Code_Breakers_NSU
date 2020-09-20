@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+{% block content %}
+
+
+<div class="container">
+  <h2>What is your need from Vendor</h2>
+  
+   
+  <form method="post" action="{% url 'controller:procurement:mail' %}" >
+  <div class="auth">
+    {% csrf_token %}
+    {{form|crispy}}
+  </div>
+
+  
+
+    
+  <button type="submit" class="btn btn-primary">Create</button>
+      
+  </form>
+
+</div>
+
+
+
+{% endblock %}
