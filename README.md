@@ -1,6 +1,6 @@
 # Code_Breakers_NSU
 ## How to run the project
-###### (This project is python based)
+###### (This project is python based) (used version: python 3.6)
 
     - cd to the directory where requirements.txt is located.
     - activate your virtualenv. (if you have)
