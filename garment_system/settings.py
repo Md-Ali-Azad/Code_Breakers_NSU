@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'procurement',
     'inventory',
+    'pos',
 ]
 
 MIDDLEWARE = [

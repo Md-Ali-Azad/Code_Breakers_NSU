@@ -19,7 +19,7 @@
   {% if delivery.count < 1 %}
   <h2 style="margin-left:40%;">No Delivery</h2>
   {% else %}
-  <h2>Dlivery List ({{delivery.count}})</h2>
+  <h2>Delivery List ({{delivery.count}})</h2>
 <table class="table table-striped table-bordered table-sm">
     <thead class="thead-dark">  
     <tr>  
@@ -27,6 +27,8 @@
         <th>Order Name</th>  
         <th>Courier Via</th>  
         <th>Date</th> 
+        <th>Update</th>
+        <th>Delete</th>  
     </tr>  
     </thead>  
     <tbody>
@@ -36,7 +38,9 @@
         <td>{{delivery.order}}</td>  
         <td>{{delivery.courier_name}}</td>  
         <td>{{delivery.created_date}}</td>
-        
+        <td><a href="/inventory/editdeli/{{ delivery.id }}/"><i class='fas fa-pencil-alt'></i> Edit</a></td>
+        <td><a href="/inventory/deletedeli/{{ delivery.id }}/"><i class='fas fa-trash-alt'></i> Delete</a></td>
+         
     </tr>  
      {%endfor%}
     </tbody>

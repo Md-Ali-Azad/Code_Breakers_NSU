@@ -9,10 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
     <style>
       body{
         margin: 0;
@@ -55,7 +58,13 @@
           </li>
 
 
-          {%if user.is_authenticated and user.groups.all.0.name in "Employee"%}
+
+
+
+
+
+
+          {%if user.is_authenticated and user.groups.all.0.name in "Vendor"%}
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -91,6 +100,51 @@
           </li>
 
           {%endif%} 
+
+
+
+
+
+
+          
+          
+
+          {%if user.is_authenticated and user.groups.all.0.name in "Employee"%}
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Order
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="/procurement/order_create">New Order</a>
+              <a class="dropdown-item " href="/procurement/order_list">Order List</a>
+              
+            </div>
+          </li>
+
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Status
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="/procurement/order_status">Order Status Form</a>
+              <a class="dropdown-item " href="/procurement/order_status_list_all">Order Status List</a>
+              
+            </div>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="/procurement/order_vendor">Vendor(order)</a>
+          </li>
+
+          {%endif%} 
+
+
+
+
+
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">

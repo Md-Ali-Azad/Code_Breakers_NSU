@@ -20,10 +20,12 @@
     <thead class="thead-dark">  
     <tr>  
         <th>No</th>  
-        <th>Vendor Name</th>  
-        <th>Vendor Mobile</th>  
+        <th>Vendor Name</th>    
         <th>Vendor Email</th>
-        <th>Vendor Image</th>
+        <th>Company Name</th>
+        <th>Contact</th>
+        <th>Address</th>
+        <th>Gender</th>
         <th>action</th>
     </tr>  
     </thead>  
@@ -31,10 +33,13 @@
         {%for vendor in vendors %}
     <tr>  
         <td>{{forloop.counter}}</td>  
-        <td>{{vendor.user.username}}</td>  
-        <td>{{vendor.vcontact}}</td>  
-        <td><img src="{{ vendor.vprofile_Image.url }}"></td>  
-        <td>{{vendor.vgender}}</td>
+        <td>{{vendor.username}}</td>  
+        <td>{{vendor.email}}</td>  
+        <td>{{vendor.vendors.company_name}}</td>  
+        <td>{{vendor.vendors.vcontact}}</td>
+        <td>{{vendor.vendors.vaddress}}</td>
+        <td>{{vendor.vendors.vgender}}</td> 
+        <!--<td><img src="{{ vendor.vprofile_Image.url }}"></td>-->  
         <td>  
             <a  href="{%url 'controller:procurement:sendvendor'%}" class="button button" width="50%" align="left">Email</a>
         </td>  

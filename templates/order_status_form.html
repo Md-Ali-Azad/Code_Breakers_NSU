@@ -1,10 +1,21 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %} 
+{% block title %}{{user}} (Order Status Create){% endblock %}
 {% block content %}
 
 
+
+{% if messages %}
+<div class="messages" id="message">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
 <div class="container">
-  <h2>Sign up</h2>
+  <h2>Order Status Form</h2>
   
    
   <form method="post" action="{% url 'controller:procurement:orderstatus' %}" enctype='multipart/form-data' >

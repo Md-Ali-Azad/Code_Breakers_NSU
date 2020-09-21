@@ -15,6 +15,7 @@ from django.contrib import messages
 from controller.decorator import Employeeonly, Owneronly, Vendoronly, Customeronly
 from django.contrib.auth.decorators import login_required
 
+@Employeeonly
 @login_required(login_url="/")
 def order_create(request): 
     if request.method == 'POST':
@@ -28,6 +29,8 @@ def order_create(request):
         o_form = OrderForm()
     return render(request, 'order_product.html', {'o_form':o_form})
 
+
+@Employeeonly
 @login_required(login_url="/")
 def order_list(request):
     if request.method == 'GET':
@@ -36,7 +39,7 @@ def order_list(request):
         }
         return render(request, 'show_order.html',context)
 
-
+@Employeeonly
 @login_required(login_url="/")
 def order_state(request): 
     if request.method == 'POST':
@@ -50,6 +53,7 @@ def order_state(request):
         o_form = OrderStatusForm()
     return render(request, 'order_status_form.html', {'o_form':o_form})
 
+@Employeeonly
 @login_required(login_url="/")
 def order_status_list(request,id):
     if request.method == 'GET':
@@ -61,7 +65,16 @@ def order_status_list(request,id):
         else:
             return HttpResponse("it's order status dont created")
 
+@Employeeonly
+@login_required(login_url="/")
+def order_status_list_all(request):
+    q=Sales_Manager.objects.all()
+    context = {
+    'Order_Status': q
+    }
+    return render(request, 'order_status_show_all.html',context)
 
+@Employeeonly
 @login_required(login_url="/")
 def Deliverd_Product(request,id):
     if request.method == 'GET':
@@ -74,17 +87,18 @@ def Deliverd_Product(request,id):
         }
         return render(request, 'show_order.html',context)
 
-
+@Employeeonly
 @login_required(login_url="/")
 def Order_vendor(request):
     if request.method == 'GET':
+        q=User.objects.filter(groups__name='Vendor')
         context = {
-            'vendors': Vendors.objects.all()
+            'vendors': q
         }
-        print(Vendors.objects.all()[0].vprofile_Image)
+        #print(q.vprofile_Image)
     return render(request, 'vendors_list.html',context)
 
-
+@Employeeonly
 @login_required(login_url="/")
 def Send_vendor(request):
     if request.method == 'GET':
@@ -93,7 +107,7 @@ def Send_vendor(request):
     return render(request, 'send_vendor.html',{'form':f})
 
 
-
+@Employeeonly
 @login_required(login_url="/")
 def Mail(request):
     if request.method == 'POST':

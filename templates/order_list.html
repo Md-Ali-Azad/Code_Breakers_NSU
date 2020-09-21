@@ -28,7 +28,9 @@
         <th>Color</th>
         <th>Buyer</th>  
         <th>Status</th>  
-        <th>Created_date</th>  
+        <th>Created Date</th>
+        <th>Update</th>
+        <th>Delete</th>   
     </tr>  
     </thead>  
     <tbody>
@@ -41,6 +43,9 @@
         <td>{{order.buyer}}</td>  
         <td>{{order.status}}</td>  
         <td>{{order.created_date}}</td>
+        <td><a href="/inventory/editord/{{ order.id }}/"><i class='fas fa-pencil-alt'></i> Edit</a></td>
+        <td><a href="/inventory/deleteord/{{ order.id }}/"><i class='fas fa-trash-alt'></i> Delete</a></td>
+         
     </tr>
     </tbody>  
      {%endfor%}

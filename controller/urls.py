@@ -25,6 +25,8 @@ urlpatterns = [
     ##########-----App Connection------#########
     path('procurement/',include('procurement.urls',namespace="procurement")),
     path('inventory/',include('inventory.urls',namespace="inventory")),
+    path('pos/',include('pos.urls',namespace="pos")),
+    
 
     path('show/',show,name='show'),
     path('edit/<int:id>',edit,name='edit'),

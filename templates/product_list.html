@@ -22,7 +22,9 @@
         <th>No</th>  
         <th> Name</th>  
         <th>Quantity</th>  
-        <th>Created date</th>  
+        <th>Created date</th> 
+        <th>Update</th>
+        <th>Delete</th> 
     </tr>  
     </thead>  
     <tbody>
@@ -32,6 +34,8 @@
         <td>{{product.name}}</td>  
         <td>{{product.quantity}}</td>  
         <td>{{product.created_date}}</td>
+        <td><a href="/inventory/editpro/{{ product.id }}/"><i class='fas fa-pencil-alt'></i> Edit</a></td>
+        <td><a href="/inventory/deletepro/{{ product.id }}/"><i class='fas fa-trash-alt'></i> Delete</a></td>
          
     </tr>  
   </tbody>
@@ -40,7 +44,10 @@
 {% endif %}
 </div>
 
-     {% endblock %}    
+     {% endblock %} 
+     
+     
+
 <style type="text/css">
   body {font:12px/1.4 Verdana,Arial; background:#eee; height:100%; margin:25px 0; padding:0}
 h1 {font:24px Georgia,Verdana; margin:0}
