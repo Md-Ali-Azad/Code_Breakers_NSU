@@ -27,7 +27,7 @@
 
 
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="#">Digital Garment System</a>
+        <a class="navbar-brand" href="#"><i class="fas fa-tshirt"></i> Digital Garment System</a>
 
         <ul class="navbar-nav">
 
@@ -99,6 +99,19 @@
             </div>
           </li>
 
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Manage Sales
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="/pos/add_product_price">Set product price</a>
+              <a class="dropdown-item " href="/pos/product_price_list">Product price list</a>
+              <a class="dropdown-item " href="/pos/seller_show/">Customer order</a>
+              
+            </div>
+          </li>
+
           {%endif%} 
 
 
@@ -137,6 +150,59 @@
 
           <li class="nav-item ">
             <a class="nav-link" href="/procurement/order_vendor">Vendor(order)</a>
+          </li>
+
+
+
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Bill
+            </a>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="/accounting/bill_list">Bill List</a>
+              <a class="dropdown-item " href="/accounting/bill_create">Bill Create</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Complete Order
+            </a>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="/accounting/list">List</a>
+              <a class="dropdown-item " href="/accounting/create">Add New</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Payment
+            </a>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="/accounting/payment_list">List</a>
+              <a class="dropdown-item " href="/accounting/payment_create">Add New</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Yeraly Overview
+            </a>
+
+            <div class="dropdown-menu">
+              {% for q in q %}
+              <a class="dropdown-item " href="/accounting/calculation/{{q.year}}">{{q.year}}</a>
+              <!--<a class="dropdown-item " href="/accounting/calculation/2019">2019</a>-->
+              {% endfor %}
+            </div>
           </li>
 
           {%endif%} 

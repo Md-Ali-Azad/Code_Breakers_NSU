@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+{% block title %}{{user}} (Complete Order List){% endblock %}
+{% block content %}
+
+
+
+{% if messages %}
+<div class="messages" id="message">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<div class="container">
+{% if complete_order.count < 1 %}
+<h2 style="margin-left:40%;">Nothing to show</h2>
+{% else %}
+<h2> Completed Order List ({{complete_order.count}})</h2>
+
+
+
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">  
+    <tr>
+        <th>no</th>    
+        <th>Completed order Name</th>  
+        <th>Income</th>   
+        <th>Year</th>  
+    </tr>  
+    </thead>  
+    <tbody>
+      {% for complete in complete_order %}  
+    <tr>  
+        <td>{{forloop.counter}}</td>  
+        <td>{{complete.order_name}}</td>  
+        <td>{{complete.income}}</td>   
+        <td>{{complete.year}}</td>
+    </tr>  
+    {% endfor %}
+     
+     
+    </tbody>  
+</table>  
+<br>  
+<br> 
+{%if not seller%} 
+<center><a href="{% url 'controller:accounting:create' %}"><button class="btn btn-primary"> Add New </button></a></center>
+{%endif%}
+
+
+{%endif%}
+
+</div>
+
+
+{% endblock %} 

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+{% block title %}{{user}} (Bill List){% endblock %}
+{% block content %}
+
+
+
+{% if messages %}
+<div class="messages" id="message">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<div class="container">
+{% if bill.count < 1 %}
+<h2 style="margin-left:40%;">Nothing to show</h2>
+{% else %}
+<h2> Bill List ({{bill.count}})</h2>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">  
+    <tr>
+        <th>no</th>    
+        <th>Bill Name</th>  
+        <th>Cost</th>   
+        <th>Year</th>  
+    </tr>  
+    </thead>  
+    <tbody>
+      {% for bill in bill %}  
+    <tr>  
+        <td>{{forloop.counter}}</td>  
+        <td>{{bill.bill_name}}</td>  
+        <td>{{bill.cost}}</td>   
+        <td>{{bill.year}}</td>
+    </tr>  
+    {% endfor %}
+     
+     
+    </tbody>  
+</table>  
+<br>  
+<br> 
+{%if not seller%} 
+<center><a href="{% url 'controller:accounting:billcreate' %}" ><button class="btn btn-primary"> New Bill </button></a></center>
+{%endif%}
+
+
+{%endif%}
+
+</div>
+
+
+{% endblock %} 
+

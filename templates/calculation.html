@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+{% block title %}{{user}} (Income form order){% endblock %}
+{% block content %}
+
+
+
+{% if messages %}
+<div class="messages" id="message">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<div class="container">
+
+<h2> Income List ({{year}})</h2>
+
+
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">  
+    <tr>  
+        <th>Completed order Income</th>  
+        <th>Payment Cost</th>   
+        <th>Bill Cost</th> 
+        <th>Profit</th>
+        <th>Year</th>
+    </tr>  
+    </thead>  
+    <tbody> 
+    <tr>  
+        <td>{{completted_order_income}}</td>  
+        <td>{{payment_cost}}</td>  
+        <td>{{bill_cost}}</td>
+        <td>{{profit}}</td>   
+        <td>{{year}}</td>
+    </tr>   
+     
+    </tbody>  
+</table>  
+<br>  
+<br> 
+{%if not seller%} 
+<center><a href="{% url 'controller:accounting:create' %}" ><button class="btn btn-primary"> Add New List </button></a></center>
+{%endif%}
+
+
+</div>
+
+
+{% endblock %} 
+

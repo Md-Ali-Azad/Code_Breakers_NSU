@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'procurement',
     'inventory',
     'pos',
+    'accounting',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'accounting.cp.yoverview',
             ],
         },
     },
@@ -145,3 +147,11 @@ MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'controller:home'
+
+#####---Email Section By Ashik (Team Mate)----####
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'AshikurRahman'
+EMAIL_HOST_PASSWORD = 'ash1234..'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
