@@ -2,11 +2,11 @@
     - This Project is developed by Team <Code_Breakers> for NSU Inter University Hackathon 2020.
 ## Developers
     - Md. Ali Azad, Ashikur Rahman, Rasel Hasan
-    - Computer Science and Engineering
+    - Dept. of Computer Science and Engineering
     - Sylhet Engineering College
     
 ## How to run the project
-###### (This project is python based) (used version: python 3.6)
+###### (This project is python-django based) (used version: python 3.6)
 
     - cd to the directory where requirements.txt is located.
     - activate your virtualenv. (if you have)
